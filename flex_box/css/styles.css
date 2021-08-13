@@ -1,0 +1,5 @@
+#about > #main {color: gray;}
+h1 { color: red !important; } /* 001 */
+h1#main.box { color: yellow !important; } /* 111 */
+section > #main.title { color: blue; } /* 111 */
+section#about > h1 { color: pink; } /* 102 */

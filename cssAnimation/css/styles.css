@@ -1,0 +1,18 @@
+body {
+    padding: 64px;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background: orange;
+
+    transition-property: transform;
+    transition-duration: 1s;
+    transform-origin: top left;
+}
+
+.box:hover {
+    /* transform: rotate(30deg); */
+    transform: scale(0.5 , 2);
+}
