@@ -1,17 +1,41 @@
 'use strict';
 
 {
-    const source = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+    function createColumn(col) {
+        const source = [];
+        for (let i = 0; i < 15; i++) {
+            source[i] = i + 1 + 15 * col;
+        }
+    
+        const column = [];
+        for (let i = 0; i < 5; i++) {
+            column[i]  = source.splice(Math.floor(Math.random() * source.length), 1)[0];
+        }
+        
+        return  column;
+    }
 
-    // Math.foor(Math.random * (14 + 1))
-    // Math.foor(Math.random * source.length)
+    function createColumns() {
+        const columnns = [];
+        for (let i = 0; i < 5; i++) {
+            columnns[i] = createColumn(i);
+        }
+        columnns[2][2] = 'FREE';
+        return columnns;
+    }
 
-    const b = [];
-    b[0] = source.splice(Math.floor(Math.random() * source.length), 1);
-    b[1] = source.splice(Math.floor(Math.random() * source.length), 1);
-    b[2] = source.splice(Math.floor(Math.random() * source.length), 1);
-    b[3] = source.splice(Math.floor(Math.random() * source.length), 1);
-    b[4] = source.splice(Math.floor(Math.random() * source.length), 1);
+    function renderBingo(columns) {
+        for (let row = 0; row < 5; row++) {
+            const tr = document.createElement('tr');
+            for (let col = 0; col < 5; col++) {
+                const td = document.createElement('td');
+                td.textContent = columns[col][row];
+                tr.appendChild(td);
+            }
+            document.querySelector('tbody').appendChild(tr);
+        }
+    }
 
-    console.log(b);
+    const columns = createColumns();
+    renderBingo(columns);
 }
