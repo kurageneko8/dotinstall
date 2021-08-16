@@ -1,10 +1,13 @@
 'use strict';
 
 {
-    // console.log(Math.random());
+    const text = document.querySelector('textarea');
 
-    // Math.floor(Math.random() * (max + 1 -min)) + min   
+    text.addEventListener('focus', () => {
+        console.log('focused');
+    });
 
-   console.log( Math.floor(Math.random() * 6) + 1) ;
-
+    text.addEventListener('blur', () => {
+        console.log('blured');
+    });
 }
