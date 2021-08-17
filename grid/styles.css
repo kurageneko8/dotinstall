@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+}
+
+.container {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    /* grid-template-rows: 100px 100px 100px; */
+
+    grid-auto-rows: 100px;
+}
+
+.box1 {
+    background-color: hsl(0, 60%, 60%);
+}
+
+.box2 {
+    background-color: hsl(60, 60%, 60%);
+}
+
+.box3 {
+    background-color: hsl(120, 60%, 60%);
+}
+
+.box4 {
+    background-color: hsl(180, 60%, 60%);
+}
+
+.box5 {
+    background-color: hsl(240, 60%, 60%);
+}
