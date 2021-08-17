@@ -1,8 +1,18 @@
-p {
-    line-height: 5;
-    background-color: pink;
+.box1 {
+    background-color: orange;
+    width: 200px;
+    height: 200px;
 }
 
-img {
-    vertical-align: text-bottom;
+.box2 {
+    background-color: skyblue;
+    width: 50%;
+    height: 50%;
+    border: 2px solid blue;
+    padding-top: 20px;
+    padding-left: 40px;
+}
+
+.box3 {
+    background-color: tomato;
 }
