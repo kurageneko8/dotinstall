@@ -1,13 +1,42 @@
 'use strict';
 
 {
-    const text = document.querySelector('textarea');
+    class Post {
+        constructor(text) {
+            this.text = text;
+            this.likeCount = 0;
+        }
 
-    text.addEventListener('focus', () => {
-        console.log('focused');
-    });
+        show() {
+            console.log(`${this.text} - ${this.likeCount} likes`);
+        }
 
-    text.addEventListener('blur', () => {
-        console.log('blured');
-    });
+        like() {
+            this.likeCount++;
+            this.show();
+        }
+
+    }
+
+    class SponsoredPost extends Post {
+        constructor(text, sponsor) {
+            super(text);
+            this.sponsor = sponsor;
+        }
+
+        show() {
+            super.show();
+            // console.log(`${this.text} - ${this.likeCount} likes`);
+            console.log(`... sponsored by ${this.sponsor}`);
+        }
+    }
+
+    const posts = [
+        new Post('JavaScriptの勉強中・・・'),
+        new Post('プログラミングたのしい'),
+        new SponsoredPost('lets master with ..', 'dotinstall'),
+    ];
+
+    posts[2].show();
+    posts[2].like();
 }
