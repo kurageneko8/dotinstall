@@ -1,13 +1,9 @@
 'use strict';
 
 {
-    const text = document.querySelector('textarea');
-
-    text.addEventListener('focus', () => {
-        console.log('focused');
-    });
-
-    text.addEventListener('blur', () => {
-        console.log('blured');
+    document.querySelector('ul').addEventListener('click', (e) => {
+        if (e.target.nodeName === 'LI') {
+            e.target.classList.toggle('done');
+        }
     });
 }
