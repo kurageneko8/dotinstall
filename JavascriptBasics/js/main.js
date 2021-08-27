@@ -1,13 +1,6 @@
 'use strict';
 
 {
-<<<<<<< HEAD
-    document.querySelector('ul').addEventListener('click', (e) => {
-        if (e.target.nodeName === 'LI') {
-            e.target.classList.toggle('done');
-        }
-    });
-=======
     class Post {
         constructor(text) {
             this.text = text;
@@ -46,5 +39,4 @@
 
     posts[2].show();
     posts[2].like();
->>>>>>> da8509c9a0970de68896c79259b0aa4a44d09395
 }
