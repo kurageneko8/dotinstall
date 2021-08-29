@@ -19,7 +19,9 @@ class Todo
 
             switch ($action) {
                 case 'add':
-                    $this->add();
+                    $id = $this->add();
+                    header('Content-Type: application/json');
+                    echo json_encode(['id' => $id]);
                     break;
 
                 case 'toggle':
@@ -38,8 +40,6 @@ class Todo
                     exit;
             }
 
-
-            header('Location: ' . SITE_URL);
             exit;
         }
     }
@@ -54,6 +54,7 @@ class Todo
         $stmt = $this->pdo->prepare("insert into todos (title) values (:title)");
         $stmt->bindValue('title', $title, \PDO::PARAM_STR);
         $stmt->execute();
+        return (int) $this->pdo->lastInsertId();
     }
 
     private function toggle()
