@@ -25,7 +25,9 @@ class Todo
                     break;
 
                 case 'toggle':
-                    $this->toggle();
+                    $isDone = $this->toggle();
+                    header('Content-Type: application/json');
+                    echo json_encode(['is_done' => $isDone]);
                     break;
 
                 case 'delete':
@@ -64,9 +66,21 @@ class Todo
             return;
         }
 
+        
+        $stmt = $this->pdo->prepare("select * from todos where id = :id");
+        $stmt->bindValue('id', $id, \PDO::PARAM_INT);
+        $stmt->execute();
+        $todo = $stmt->fetch();
+        if (empty($todo)) {
+            header('HTTP', true, 404);
+            exit;
+        }
+
         $stmt = $this->pdo->prepare("update todos set is_done = NOT is_done where id = :id");
         $stmt->bindValue('id', $id, \PDO::PARAM_INT);
         $stmt->execute();
+
+        return (boolean) !$todo->is_done;
     }
 
     private function delete()
